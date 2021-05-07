@@ -10,7 +10,25 @@
   ],
   "author": "",
   "license": "MIT",
+  "devDependencies": {
+    "@glennsl/bs-jest": "^0.7.0",
+    "babel-preset-env": "^1.7.0",
+    "bs-platform": "^9.0.2",
+    "jest": "^26.6.3",
+    "nodemon": "^2.0.7",
+    "npm-run-all": "^4.1.5",
+    "npm-watch": "^0.9.0",
+    "parcel-bundler": "^1.12.5",
+    "rescript": "9.1.2"
+  },
   "dependencies": {
-    "rescript": "*"
+    "@glennsl/bs-json": "^5.0.2",
+    "axios": "^0.21.1",
+    "bs-axios": "0.0.43",
+    "bs-fetch": "^0.6.2",
+    "faker": "^5.5.3",
+    "isomorphic-fetch": "^3.0.0",
+    "lodash": "^4.17.21",
+    "reason-react": "^0.9.1"
   }
 }

@@ -15,8 +15,8 @@ type auto
  * Bind the CONSTRUCTOR from JS to a Reason function:
  * - [@bs.new]
  */
-@module("../../../src/js/auto.js") @new
-external createAuto: (~marke: string) => auto = "default"
+@module @new
+external createAuto: (~marke: string) => auto = "../../../src/js/auto"
 
 let brumbrum = createAuto(~marke="BrumBrum")
 
@@ -41,12 +41,12 @@ Js.log(valley["secret"])
 @val("test") @return(nullable)
 external kannseinLeer: string => option<string> = "test"
 
-list{"nix", "drin"} |> List.map(wert =>
+let _ = list{"nix", "drin"} |> List.map(wert =>
   switch kannseinLeer(wert) {
   | Some(wert) => Js.log(j`wert gefunden : $wert`)
   | None => Js.log("wert leer")
   }
-)|>ignore
+)
 
 /*
  * Create Js-Objekt in Reason:
@@ -68,9 +68,7 @@ Js.log(jsObject["gueltig"])
  */
 type jsOb = {@set "name": string, @meth "jubeln": unit => unit}
 
-%%raw(
-  "const obj = { name: `Rudolf`, jubeln: () => console.log(`Ich bin ${obj.name}.`)}"
-)
+%%raw("const obj = { name: `Rudolf`, jubeln: () => console.log(`Ich bin ${obj.name}.`)}")
 
 @val external obj: jsOb = "obj"
 
@@ -92,15 +90,10 @@ type wolf
 @val external testObjekt: wolf = "wolf"
 
 @send
-external getDataFromTestObject: (
-  wolf,
-  ~title: string,
-  ~age: int,
-  ~szn: string,
-) => string = "getData"
+external getDataFromTestObject: (wolf, ~title: string, ~age: int, ~szn: string) => string =
+  "getData"
 
-let nameOfTestObjekt =
-  testObjekt |> getDataFromTestObject(~age=54, ~szn="444", ~title="Herr")
+let nameOfTestObjekt = testObjekt |> getDataFromTestObject(~age=54, ~szn="444", ~title="Herr")
 
 Js.log(nameOfTestObjekt)
 
@@ -130,8 +123,8 @@ let default = {"pommes": "fritz", "ungesund": true}
  */
 type fahrrad
 
-// @module @new
-// external createFahrrad: string => fahrrad = "../../../src/js/fahrrad.js"
+@module @new
+external createFahrrad: string => fahrrad = "../../../src/js/fahrrad"
 /*
   Bucklescript-Cheetsheet
   https://bucklescript.github.io/docs/en/interop-cheatsheet.html
